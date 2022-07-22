@@ -5,30 +5,27 @@ from moviepy.editor import *
 
 def render_video(video):
     print(video)
+
     template = video.template
     screen_1 = ImageClip(f"assets/template{template}/back1.jpg").set_duration(5)
-    img1 = (
-        ImageClip(f"assets/template{template}/asset1.png")
-        .set_duration(5)
-        .set_position("center")
-    )
+    img1 = ImageClip(video.scenes[0]["image"]).set_duration(5).set_position("center")
     screen_1 = CompositeVideoClip([screen_1, img1])
 
     screen_2 = ImageClip(f"assets/template{template}/back2.jpg").set_duration(5)
     img1 = (
-        ImageClip(f"assets/template{template}/asset2.png")
+        ImageClip(video.scenes[1]["image"])
         .set_duration(5)
         .set_position(("center", 0.45), relative=True)
         .resize(2)
     )
     text1 = (
-        TextClip("We're App Only", fontsize=90, color="white")
+        TextClip(video.scenes[1]["text"], fontsize=90, color="white")
         .set_duration(5)
         .set_position(("center", 0.2), relative=True)
     )
     text2 = (
         TextClip(
-            "The ______ app is now available as an app",
+            video.scenes[1]["subtext"],
             fontsize=40,
             font="Calibri light",
             color="white",
@@ -64,15 +61,16 @@ def render_video(video):
     # )
     # s.render("./temp.png")
 
+    screen_3 = cv2.imread(f"assets/template{template}/back2.jpg")
     img1 = (
-        ImageClip(f"assets/template{template}/asset3.png")
+        ImageClip(video.scenes[2]["image"])
         .set_duration(5)
         .set_position((0.1, "center"), relative=True)
         .resize(0.55)
     )
     text1 = (
         TextClip(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing \nelit. Aliquam ultrices",
+            video.scenes[2]["text"],
             fontsize=60,
             color="white",
             align="center",
@@ -82,7 +80,7 @@ def render_video(video):
     )
     text2 = (
         TextClip(
-            "All new version",
+            video.scenes[2]["subtext"],
             fontsize=40,
             bg_color="green",
             color="white",
@@ -94,7 +92,6 @@ def render_video(video):
     cur_x = 0.4 * 1920
     cur_y = 0.6 * 1080 + 65
     image_width = text1.w
-    screen_3 = cv2.imread(f"assets/template{template}/back2.jpg")
     cv2.line(
         screen_3,
         (int(cur_x), int(cur_y)),
@@ -104,15 +101,16 @@ def render_video(video):
     screen_3 = ImageClip(cv2.cvtColor(screen_3, cv2.COLOR_RGB2BGR)).set_duration(5)
     screen_3 = CompositeVideoClip([screen_3, img1, text1, text2])
 
+    screen_4 = cv2.imread(f"assets/template{template}/back2.jpg")
     img1 = (
-        ImageClip(f"assets/template{template}/asset3.png")
+        ImageClip(video.scenes[3]["image"])
         .set_duration(5)
         .set_position((0.7, "center"), relative=True)
         .resize(0.55)
     )
     text1 = (
         TextClip(
-            "Lorem ipsum dolor sit amet, consectetur \nadipiscing elit. Aliquam ultrices",
+            video.scenes[3]["text"],
             fontsize=60,
             color="white",
             align="west",
@@ -122,7 +120,7 @@ def render_video(video):
     )
     text2 = (
         TextClip(
-            "All new version",
+            video.scenes[3]["subtext"],
             fontsize=40,
             bg_color="green",
             color="white",
@@ -134,7 +132,6 @@ def render_video(video):
     cur_x = 0.05 * 1920
     cur_y = 0.2 * 1080 + 65
     image_width = text1.w
-    screen_4 = cv2.imread(f"assets/template{template}/back2.jpg")
     cv2.line(
         screen_4,
         (int(cur_x), int(cur_y)),
