@@ -5,4 +5,5 @@ from pydantic import BaseModel
 
 class Video(BaseModel):
     template: int
-    markdown: dict
+    title: str
+    scenes: list

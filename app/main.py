@@ -8,7 +8,7 @@ app = FastAPI(
 )
 
 
-@app.get("/hello")
+@app.get("/")
 async def root():
     return {"message": "Render Mark"}
 

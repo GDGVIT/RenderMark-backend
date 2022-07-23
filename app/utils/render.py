@@ -4,7 +4,7 @@ from moviepy.editor import *
 
 
 def render_video(video):
-    print(video)
+    # print(video)
 
     template = video.template
     screen_1 = ImageClip(f"assets/template{template}/back1.jpg").set_duration(5)
@@ -16,7 +16,7 @@ def render_video(video):
         ImageClip(video.scenes[1]["image"])
         .set_duration(5)
         .set_position(("center", 0.45), relative=True)
-        .resize(2)
+        .resize(0.5)
     )
     text1 = (
         TextClip(video.scenes[1]["text"], fontsize=90, color="white")
