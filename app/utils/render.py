@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from moviepy.editor import *
+from moviepy.editor import CompositeVideoClip, ImageClip, TextClip, concatenate
 
 
 def render_video(video):
