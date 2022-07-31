@@ -30,5 +30,5 @@ r = requests.post(
     },
 )
 
-with open(r"C:\Users\vishruth\Desktop\video.mp4", "wb") as f:
+with open(r"video.mp4", "wb") as f:
     f.write(r.content)
