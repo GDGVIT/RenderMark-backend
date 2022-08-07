@@ -3,12 +3,9 @@ import uuid
 import cloudinary
 import cloudinary.api
 import cloudinary.uploader
-from dotenv import load_dotenv
 from fastapi import APIRouter, Request, Response
 
 router = APIRouter()
-load_dotenv()
-config = cloudinary.config(secure=True)
 
 
 @router.route("/FileUploader", methods=["GET", "POST"])
