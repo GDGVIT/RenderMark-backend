@@ -30,5 +30,4 @@ r = requests.post(
     },
 )
 
-with open(r"video.mp4", "wb") as f:
-    f.write(r.content)
+print(r.json())

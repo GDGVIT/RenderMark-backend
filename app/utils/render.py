@@ -1,3 +1,4 @@
+import json
 from uuid import uuid4
 
 import cv2
@@ -7,27 +8,26 @@ from moviepy.editor import CompositeVideoClip, ImageClip, TextClip, concatenate
 
 def render_video(video):
     # print(video)
-
-    template = video.template
+    template = video["template"]
     screen_1 = ImageClip(f"assets/template{template}/back1.jpg").set_duration(5)
-    img1 = ImageClip(video.scenes[0]["image"]).set_duration(5).set_position("center")
+    img1 = ImageClip(video["scenes"][0]["image"]).set_duration(5).set_position("center")
     screen_1 = CompositeVideoClip([screen_1, img1])
 
     screen_2 = ImageClip(f"assets/template{template}/back2.jpg").set_duration(5)
     img1 = (
-        ImageClip(video.scenes[1]["image"])
+        ImageClip(video["scenes"][1]["image"])
         .set_duration(5)
         .set_position(("center", 0.45), relative=True)
         .resize(0.5)
     )
     text1 = (
-        TextClip(video.scenes[1]["text"], fontsize=90, color="white")
+        TextClip(video["scenes"][1]["text"], fontsize=90, color="white")
         .set_duration(5)
         .set_position(("center", 0.2), relative=True)
     )
     text2 = (
         TextClip(
-            video.scenes[1]["subtext"],
+            video["scenes"][1]["subtext"],
             fontsize=40,
             font="Calibri light",
             color="white",
@@ -65,14 +65,14 @@ def render_video(video):
 
     screen_3 = cv2.imread(f"assets/template{template}/back2.jpg")
     img1 = (
-        ImageClip(video.scenes[2]["image"])
+        ImageClip(video["scenes"][2]["image"])
         .set_duration(5)
         .set_position((0.1, "center"), relative=True)
         .resize(0.55)
     )
     text1 = (
         TextClip(
-            video.scenes[2]["text"],
+            video["scenes"][2]["text"],
             fontsize=60,
             color="white",
             align="center",
@@ -82,7 +82,7 @@ def render_video(video):
     )
     text2 = (
         TextClip(
-            video.scenes[2]["subtext"],
+            video["scenes"][2]["subtext"],
             fontsize=40,
             bg_color="green",
             color="white",
@@ -105,14 +105,14 @@ def render_video(video):
 
     screen_4 = cv2.imread(f"assets/template{template}/back2.jpg")
     img1 = (
-        ImageClip(video.scenes[3]["image"])
+        ImageClip(video["scenes"][3]["image"])
         .set_duration(5)
         .set_position((0.7, "center"), relative=True)
         .resize(0.55)
     )
     text1 = (
         TextClip(
-            video.scenes[3]["text"],
+            video["scenes"][3]["text"],
             fontsize=60,
             color="white",
             align="west",
@@ -122,7 +122,7 @@ def render_video(video):
     )
     text2 = (
         TextClip(
-            video.scenes[3]["subtext"],
+            video["scenes"][3]["subtext"],
             fontsize=40,
             bg_color="green",
             color="white",
@@ -144,8 +144,8 @@ def render_video(video):
     screen_4 = CompositeVideoClip([screen_4, img1, text1, text2])
     # screen_4.preview(fps=24)
 
-    video = concatenate([screen_1, screen_2, screen_3, screen_4], method="compose")
+    final = concatenate([screen_1, screen_2, screen_3, screen_4], method="compose")
     uuid = str(uuid4())
-    video.write_videofile(f"media/{uuid}.mp4", fps=24)
+    final.write_videofile(f"media/{uuid}.mp4", fps=24)
 
-    return f"media/{uuid}.mp4"
+    return f"{uuid}.mp4"
