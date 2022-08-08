@@ -1,0 +1,33 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: render-mark
+    # '/start' is the shell script used to run the service
+    command: /start
+
+    volumes:
+      - ./app:/app
+    ports:
+      - 8000:80
+    env_file:
+      - .env
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:6-alpine
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: render-mark
+    command: /start-celeryworker
+    volumes:
+      - ./app:/app
+    env_file:
+      - .env
+    depends_on:
+      - redis

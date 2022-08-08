@@ -1,11 +1,16 @@
+import cloudinary
 import uvicorn
 from api.api import api_router
 from core.config import settings
+from dotenv import load_dotenv
 from fastapi import FastAPI
 
 app = FastAPI(
     title="Render Mark",
 )
+
+load_dotenv()
+config = cloudinary.config(secure=True)
 
 
 @app.get("/")
