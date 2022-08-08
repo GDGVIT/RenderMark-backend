@@ -1,13 +1,8 @@
-from urllib.error import HTTPError
-from uuid import uuid4
-
 from celery.result import AsyncResult
 from fastapi import APIRouter, HTTPException
-from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse
 from schemas.video import Video
 from tasks.tasks import render_video_task
-from utils.render import render_video
-from worker import celery
 
 router = APIRouter()
 
