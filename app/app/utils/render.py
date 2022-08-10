@@ -1,6 +1,7 @@
 from uuid import uuid4
 
 import cv2
+import psutil
 from moviepy.editor import CompositeVideoClip, ImageClip, TextClip, concatenate
 
 
@@ -144,6 +145,8 @@ def render_video(video):
 
     final = concatenate([screen_1, screen_2, screen_3, screen_4], method="compose")
     uuid = str(uuid4())
-    final.write_videofile(f"media/{uuid}.mp4", fps=24)
+    final.write_videofile(
+        f"media/{uuid}.mp4", fps=24, logger=None, threads=(psutil.cpu_count())
+    )
 
     return f"{uuid}.mp4"
