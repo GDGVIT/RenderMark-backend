@@ -1,3 +1,6 @@
+import json
+import pathlib
+
 from celery.result import AsyncResult
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import FileResponse, JSONResponse
@@ -27,13 +30,21 @@ def get_status(task_id):
     result = {
         "task_id": task_id,
         "task_status": task_result.status,
-        "task_result": task_result.result,
+        "task_result": task_result.info,
     }
     return JSONResponse(result)
 
 
 @router.get("/videos/{video_path}")
 def get_video(video_path):
-    if video_path:
+    try:
         return FileResponse(f"media/{video_path}")
-    raise HTTPException(status_code=404, detail="Video not found")
+    except Exception as exc:
+        raise HTTPException(status_code=404, detail="Video not found") from exc
+
+
+@router.get("/templates")
+def get_templates():
+    with open(pathlib.Path(__file__).parent / "templates.json") as f:
+        templates = json.loads(f.read())
+        return JSONResponse(templates)
