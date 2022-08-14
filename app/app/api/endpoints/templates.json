@@ -1,7 +1,9 @@
-{
-  "thefirstone": {
-    "name": "thefirstone",
-    "thumbnail": "https://res.cloudinary.com/vishruth/image/upload/v1660404765/thefirstone_okqtl5.png",
-    "video": "https://res.cloudinary.com/vishruth/video/upload/v1660404709/thefirstone_yt8oab.mp4"
+[
+  {
+    "thefirstone": {
+      "name": "thefirstone",
+      "thumbnail": "https://res.cloudinary.com/vishruth/image/upload/v1660404765/thefirstone_okqtl5.png",
+      "video": "https://res.cloudinary.com/vishruth/video/upload/v1660404709/thefirstone_yt8oab.mp4"
+    }
   }
-}
+]

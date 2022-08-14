@@ -1,14 +1,11 @@
 from uuid import uuid4
 
 import cv2
-import psutil
 from moviepy.editor import CompositeVideoClip, ImageClip, TextClip, concatenate
 
 
 def render(video):
     template = video["template"]
-
-    screensize = (1080, 1920)
 
     screen_1 = ImageClip(f"assets/{template}/back1.jpg").set_duration(5)
     img1 = ImageClip(video["scenes"][0]["image"])

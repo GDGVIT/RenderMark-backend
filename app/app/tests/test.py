@@ -10,7 +10,9 @@ r = requests.post(
                 "image": "https://i.imgur.com/vCgTihs.jpg",
             },
             {
-                "image": "https://previews.123rf.com/images/varijanta/varijanta1701/varijanta170100028/70057980-set-of-flat-design-social-network-stickers-isolated-vector-illustrations-for-online-communication-ne.jpg",
+                "image": "https://previews.123rf.com/images/varijanta/varijanta1701/varijanta1"
+                + "70100028/70057980-set-of-flat-design-social-network-stickers-isolated-vector-i"
+                + "llustrations-for-online-communication-ne.jpg",
                 "text": "Stickers in Gmeet!",
                 "subtext": "Express yourself with your favourite stickers",
             },
