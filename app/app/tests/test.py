@@ -3,28 +3,31 @@ import requests
 r = requests.post(
     "http://127.0.0.1:8000/api/v1/render",
     json={
-        "template": 1,
-        "title": "A Promo Video",
+        "template": "thefirstone",
+        "title": "Gmeet Stickers",
         "scenes": [
             {
-                "image": "shorturl.at/bgor9",
-                "text": "This is the first scene",
-                "subtext": "This is the first scene's subtext",
+                "image": "https://i.imgur.com/vCgTihs.jpg",
             },
             {
-                "image": "shorturl.at/bJRV8",
-                "text": "This is the second scene",
-                "subtext": "This is the second scene's subtext",
+                "image": "https://previews.123rf.com/images/varijanta/varijanta1701/varijanta1"
+                + "70100028/70057980-set-of-flat-design-social-network-stickers-isolated-vector-i"
+                + "llustrations-for-online-communication-ne.jpg",
+                "text": "Stickers in Gmeet!",
+                "subtext": "Express yourself with your favourite stickers",
             },
             {
-                "image": "shorturl.at/bJRV8",
-                "text": "This is the third scene",
-                "subtext": "This is the third scene's subtext",
+                "image": "https://i.insider.com/5f6a2bb5323fc4001e0d7c7c?width=750&format=jpeg",
+                "text": "Insert stickers with a click of a button!",
             },
             {
-                "image": "shorturl.at/bJRV8",
-                "text": "This is the fourth scene",
-                "subtext": "This is the fourth scene's subtext",
+                "image": "https://cdn.nerdschalk.com/wp-content/uploads/2018/10/Pokemon-WAStickers.jpg",
+                "text": "Use your own stickers!",
+                "subtext": "The pokemon sticker pack is available for free",
+            },
+            {
+                "text": "Check it out now!",
+                "subtext": "stick-it-out.com",
             },
         ],
     },

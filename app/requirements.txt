@@ -44,6 +44,7 @@ platformdirs==2.5.2
 proglog==0.1.10
 prometheus-client==0.14.1
 prompt-toolkit==3.0.30
+psutil==5.9.1
 pydantic==1.9.1
 pylint==2.14.4
 pyparsing==3.0.9

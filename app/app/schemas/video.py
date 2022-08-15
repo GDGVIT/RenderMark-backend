@@ -2,6 +2,6 @@ from pydantic import BaseModel
 
 
 class Video(BaseModel):
-    template: int
+    template: str
     title: str
     scenes: list

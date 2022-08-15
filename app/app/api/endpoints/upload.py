@@ -8,7 +8,7 @@ from fastapi import APIRouter, Request, Response
 router = APIRouter()
 
 
-@router.route("/FileUploader", methods=["GET", "POST"])
+@router.post("/FileUploader")
 async def file_upload(request: Request):
     file = await request.body()
     # with open(f"file{guess_extension(request.content_type)}", "wb") as blob:
