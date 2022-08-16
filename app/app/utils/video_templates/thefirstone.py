@@ -1,7 +1,13 @@
 from uuid import uuid4
 
 import cv2
-from moviepy.editor import CompositeVideoClip, ImageClip, TextClip, concatenate
+from moviepy.editor import (
+    AudioFileClip,
+    CompositeVideoClip,
+    ImageClip,
+    TextClip,
+    concatenate,
+)
 
 
 def render(video):
@@ -144,6 +150,8 @@ def render(video):
     screen_5 = CompositeVideoClip([screen_5, text1, text2])
 
     final = concatenate([screen_1, screen_2, screen_3, screen_4, screen_5])
+    audioclip = AudioFileClip("assets/thefirstone/audio.mp3")
+    final = final.set_audio(audioclip)
     uuid = str(uuid4())
     final.write_videofile(
         f"media/{uuid}.mp4", fps=24, logger=None
