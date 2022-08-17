@@ -1,7 +1,13 @@
 from uuid import uuid4
 
 import cv2
-from moviepy.editor import CompositeVideoClip, ImageClip, TextClip, concatenate
+from moviepy.editor import (
+    AudioFileClip,
+    CompositeVideoClip,
+    ImageClip,
+    TextClip,
+    concatenate,
+)
 
 
 def render(video):
@@ -19,7 +25,7 @@ def render(video):
         .set_duration(5)
         .set_position(("center", 0.45), relative=True)
     )
-    img1 = img1.resize(500 / img1.w if 500 / img1.w > 500 / img1.h else 500 / img1.h)
+    img1 = img1.resize(500 / img1.w if 500 / img1.w < 500 / img1.h else 500 / img1.h)
 
     text1 = (
         TextClip(
@@ -57,6 +63,7 @@ def render(video):
             fontsize=50,
             color="white",
             align="center",
+            font="Calibri",
         )
         .set_duration(5)
         .set_position((0.43, 0.6), relative=True)
@@ -88,6 +95,7 @@ def render(video):
             fontsize=60,
             color="white",
             align="west",
+            font="Calibri",
         )
         .set_duration(5)
         .set_position((0.1, 0.25), relative=True)
@@ -99,6 +107,7 @@ def render(video):
             fontsize=50,
             color="white",
             align="center",
+            font="Calibri",
         )
         .set_duration(5)
         .set_position((0.15, 0.7), relative=True)
@@ -141,6 +150,8 @@ def render(video):
     screen_5 = CompositeVideoClip([screen_5, text1, text2])
 
     final = concatenate([screen_1, screen_2, screen_3, screen_4, screen_5])
+    audioclip = AudioFileClip("assets/thefirstone/audio.mp3")
+    final = final.set_audio(audioclip)
     uuid = str(uuid4())
     final.write_videofile(
         f"media/{uuid}.mp4", fps=24, logger=None
