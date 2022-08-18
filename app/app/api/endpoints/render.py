@@ -48,3 +48,10 @@ def get_templates():
     with open(pathlib.Path(__file__).parent / "templates.json") as f:
         templates = json.loads(f.read())
         return JSONResponse(templates)
+
+
+@router.get("/structures/{template_name}")
+def get_template_structure(template_name):
+    with open(pathlib.Path(__file__).parent / "structures.json") as f:
+        structures = json.loads(f.read())
+        return JSONResponse(structures[template_name])
