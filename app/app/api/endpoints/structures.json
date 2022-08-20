@@ -1,0 +1,16 @@
+{
+  "thefirstone": [
+    ["image"],
+    ["image", "text", "subtext"],
+    ["image", "text"],
+    ["image", "text", "subtext"],
+    ["text", "subtext"]
+  ],
+  "dark": [
+    ["text", "subtext"],
+    ["image", "text", "subtext"],
+    ["image", "text", "subtext"],
+    ["image", "text", "subtext"],
+    ["text", "subtext"]
+  ]
+}
